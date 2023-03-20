@@ -1,0 +1,319 @@
+.isBlack{
+    background: #27262C;
+}
+
+.page-layout{
+    position: relative;
+width: 1728px;
+height: 1117px;
+
+/* black */
+
+background: #27262C;
+}
+
+.cont{
+    box-sizing: border-box;
+}
+
+.cont-layout{
+    display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+
+position: absolute;
+width: 1171px;
+height: 185px;
+left: 484px;
+top: 466px;
+
+background: #363636;
+border: 1px solid #5B5B5B;
+border-radius: 4px;
+}
+
+.dashboard{
+    position: absolute;
+width: 325px;
+height: 404px;
+left: 66px;
+top: 356px;
+z-index: -1;
+
+background: #332940;
+border-radius: 20px;
+}
+
+.dashboard-content{
+    position: relative;
+width: 229px;
+height: 44px;
+left: 105px;
+top: 408px;
+z-index: +1;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 28px;
+line-height: 34px;
+
+background-color: #8500B4;
+color: #FFFFFF;
+}
+
+.dashboard-content-user{
+    /* user */
+
+
+position: relative;
+width: 229px;
+height: 44px;
+left: 105px;
+top: 489px;
+z-index: inherit;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 28px;
+line-height: 34px;
+
+background-color: #332940;
+color: #FFFFFF;
+}
+
+.dashboard-content-customer{
+    position: relative;
+width: 286px;
+height: 44px;
+left: 105px;
+top: 538px;
+z-index: inherit;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 28px;
+line-height: 34px;
+
+background-color: #332940;
+color: #FFFFFF;
+}
+
+.logoutBtn{
+    position: absolute;
+width: 386px;
+height: 136px;
+left: 1511px;
+top: 103px;
+}
+
+.tableBtn{
+    position: absolute;
+width: 446px;
+height: 57.5px;
+left: 1141px;
+top: 584px;
+}
+
+.isHeader{
+    
+position: absolute;
+width: 490px;
+height: 77px;
+left: 664px;
+top: 64px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 64px;
+line-height: 77px;
+
+/* withe */
+
+color: #FFFFFF;
+}
+
+.isSubHead{
+    position: absolute;
+width: 375px;
+height: 76px;
+left: 476px;
+top: 260px;
+color: #03DAC5;
+}
+
+.isUser{
+    position: absolute;
+width: 229px;
+height: 44px;
+left: 105px;
+top: 473px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 28px;
+line-height: 34px;
+
+color: #FFFFFF;
+}
+
+.isCustomer{
+    position: absolute;
+width: 286px;
+height: 44px;
+left: 105px;
+top: 538px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 28px;
+line-height: 34px;
+
+color: #FFFFFF;
+}
+
+.selLine-usr{
+    position: absolute;
+width: 94px;
+height: 0px;
+left: 105px;
+top: 517px;
+
+border: 4px solid #03DAC5;
+}
+
+.selLine-cus{
+    position: absolute;
+width: 94px;
+height: 0px;
+left: 109px;
+top: 582px;
+
+border: 4px solid #03DAC5;
+}
+
+.row1-layout{
+    display: flex;
+flex-direction: row;
+align-items: flex-start;
+padding: 0px;
+
+width: 1171px;
+height: 92.5px;
+
+background: rgba(255, 255, 255, 0.0001);
+}
+
+.inside-layout{
+    flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 1;
+}
+
+.tblcnt{
+    /* Text */
+
+
+width: 268.75px;
+height: 47px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 24px;
+line-height: 130%;
+/* identical to box height, or 47px */
+
+
+color: #FFFFFF;
+
+
+/* Inside auto layout */
+
+flex: none;
+order: 0;
+flex-grow: 1;
+}
+
+.cell{
+    /* Cell */
+
+    
+box-sizing: border-box;
+
+/* Auto layout */
+
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 20px;
+
+width: 129.75px;
+height: 51.5px;
+
+background: rgba(255, 255, 255, 0.05);
+border-width: 1px 0px 0px 1px;
+border-style: solid;
+border-color: #5B5B5B;
+
+/* Inside auto layout */
+
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 1;
+}
+
+.addBtn{
+    position: absolute;
+    width: 168px;
+    height: 58.34px;
+    left: 1474px;
+    top: 389px;
+    
+    background: #8500B4;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 17px;
+}
+
+.addBtn-text{
+    position: absolute;
+width: 168px;
+height: 58.34px;
+left: 1473px;
+top: 395px;
+
+font-family: 'Exo';
+font-style: normal;
+font-weight: 600;
+font-size: 36px;
+line-height: 48px;
+text-align: center;
+
+color: #FFFFFF;
+}
+
+.editBtn{
+    position: absolute;
+width: 144px;
+height: 76.5px;
+left: 1144px;
+top: 575px;
+}
+
+.deleteBtn{
+    position: absolute;
+width: 136px;
+height: 76.5px;
+left: 1454px;
+top: 575px;
+
+filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
