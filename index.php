@@ -3,67 +3,69 @@
 <?php require_once('./inc/header.php'); ?>
 
 
-            <h1 class="isHeader">Admin_Business</h1>
+<div>
+
+<span class="isHeader"><p>Welcome <span style="font-size:44px;"><?php echo $_SESSION["name"]; ?></span></p></span>
+
+<!-- sub header -->
+
+<span class="sub-head">Details</span> <div class="sub-line"></div>
+
+<span><a href="../phpFunc/functions/businessUser/logout.php"><button class="log_out-button">LogOut</button> </a></span>
 
 
-        <div class="isSubHead">
-            <h1>Users</h1>
-        </div>
+</div>
 
-        <div class="dashboard"></div>
+<!-- header over -->
 
-<table class="cont cont-layout">
-        <thead class="cont cont-layout">
-			<tr class="row1-layout inside-layout tblcnt">						
-				<th class="cell">Id</th>					
-				<th class="cell">Name</th>					
-				<th class="cell">Email</th>
-				<th class="cell">Password</th>	
-				<th class="cell">Roles</th>	
-				<th class="cell">LastLogin</th>	
-				<th class="cell">Deleted</th>
-                <th class="cell"></th>
-                <th class="cell"></th>						
-			</tr>
-		</thead>
-        <?php
-            while ($row = mysqli_fetch_assoc($result)) {
-            echo "
-            <tr bgcolor='#373737'>
-                <td>" . $row['id'] . "</td>
-                <td>" . $row['name'] . "</td>
-                <td>" . $row['email'] . "</td>
-                <td>" . $row['password'] . "</td>
-                <td>" . $row['roles'] . "</td>
-                <td>" . $row['lastLogin'] . "</td>
-                <td>" . $row['deleted'] . "</td>
-                <td>&nbsp;&nbsp;&nbsp;&nbsp;<a href='./phpFunc/functions/businessUser/update.php?id=".$row['id']."'><button class='edit-button' role='button'>Edit</button> </a>&nbsp;&nbsp;&nbsp;&nbsp;</td>
-                <td>&nbsp;&nbsp;&nbsp;&nbsp;<a href='./phpFunc/functions/businessUser/delete.php?id=".$row['id']."'><button class='delete-button' role='button'>Delete</button> </a>&nbsp;&nbsp;&nbsp;&nbsp;</td>
-            </tr>";
-            }
-        ?>
 
-        </table>
+<!--menu-->
 
-        <div class="isHeader">
-            <h1>Admin_Business</h1>
-        </div>
+<div class="menu">
 
-        <div class="isSubHead">
-            <h1>Users</h1>
-        </div>
+<span class="menu-header">Dashboard</span>
 
-        
+        <span class="menu-item"><a href="./index.php">Your Details</a></span> <div class="menu-line"></div>
+</div>
 
-        <div>
-            <div class="dashboard-content">Dashboard</div>
-            <div><button onclick="document.getElementById('user.php')".style.display="none" class="dashboard-content-user"; style="border: 0cap;">User</button></div>
-            <div><button onclick="document.getElementById('customer.php')" class="dashboard-content-user";">Customer</button></div>
-        </div>
+<!-- menu over -->
 
-        <div>
-            <span><button onclick="document.getElementById('addform').style.display='block'" class="addBtn addBtn-text">Add</button></span>
-        </div>
+
+<!-- user view table -->
+
+<table border="0" class="table_dec">
+
+<tr bgcolor="#404040"> 
+
+<th>Customer ID</th>
+<th>First Name</th>
+<th>Last Name</th>
+<th>Mobile</th>
+<th>Address</th>
+<th>E-mail</th>
+<th>&nbsp;&nbsp;Age&nbsp;&nbsp;</th>
+<th>&nbsp;&nbsp;Gender&nbsp;&nbsp;</th>
+<th>Update</th>
+
+</tr>
+<?php
+$row = mysqli_fetch_assoc($result);
+    echo "
+        <tr bgcolor='#373737'>
+            <td>" . $row['customer_id'] . "</td>
+            <td>" . $row['fname'] . "</td>
+            <td>" . $row['lname'] . "</td>
+            <td>" . $row['mob'] . "</td>
+            <td>" . $row['address'] . "</td>
+            <td>" . $row['email'] . "</td>
+            <td>" . $row['age'] . "</td>
+            <td>" . $row['gender'] . "</td>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;<a href='./phpFunc/functions/customer/update.php?customer_id=".$row['customer_id']."'><button class='edit-button' role='button'>Edit</button> </a>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+
+        </tr>";
+
+?>
+
+</table>
 
 <?php require_once('./inc/footer.php'); ?>
-
