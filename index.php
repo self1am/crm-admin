@@ -1,16 +1,7 @@
+<?php require_once('../phpFunc/connection/connect.php'); ?>
 <?php session_start(); ?>
 
-<!DOCTYPE html>
-<html>
- 
-<head>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="../../styles/customer/main.css">
-        <title>Admin Page</title>
-        
-</head>
-
-<body bgcolor="#27262C">
+<?php require_once('./inc/header.php'); ?>
 
 <div>
 

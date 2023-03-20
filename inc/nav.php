@@ -1,6 +1,6 @@
 <?php require_once('../init.php'); ?>
 
-<nav class="mt-2">
+<nav class="">
     <ul class="nav nav-pills nav-sidebar flex-column nav-flat" role="menu">
                     
     <li class="nav-header">Dashboard</li>
