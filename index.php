@@ -1,17 +1,26 @@
 <?php session_start(); ?>
 
-<?php require_once('./inc/header.php'); ?>
+<!DOCTYPE html>
+<html>
+ 
+<head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="../../styles/customer/main.css">
+        <title>Admin Page</title>
+        
+</head>
 
+<body bgcolor="#27262C">
 
 <div>
 
-<span class="isHeader"><p>Welcome <span style="font-size:44px;"><?php echo $_SESSION["name"]; ?></span></p></span>
+<span class="wel-msg"><p>Welcome <span style="font-size:44px;"><?php echo $_SESSION["name"]; ?></span></p></span>
 
 <!-- sub header -->
 
 <span class="sub-head">Details</span> <div class="sub-line"></div>
 
-<span><a href="../phpFunc/functions/businessUser/logout.php"><button class="log_out-button">LogOut</button> </a></span>
+<span><a href="./phpFunc/functions/customer/logout.php"><button class="log_out-button">LogOut</button> </a></span>
 
 
 </div>
@@ -23,9 +32,9 @@
 
 <div class="menu">
 
-<span class="menu-header">Dashboard</span>
+<span class="menu-header">MENU</span>
 
-        <span class="menu-item"><a href="./index.php">Your Details</a></span> <div class="menu-line"></div>
+        <span class="menu-item"><a href="./customerView.php">Your Details</a></span> <div class="menu-line"></div>
 </div>
 
 <!-- menu over -->
@@ -67,5 +76,6 @@ $row = mysqli_fetch_assoc($result);
 ?>
 
 </table>
+
 
 <?php require_once('./inc/footer.php'); ?>
