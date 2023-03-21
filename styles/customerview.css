@@ -1,0 +1,315 @@
+body {
+    height: 950px;
+    background-color: #000000;
+}
+/* css grid */
+.item1 { grid-area: main; 
+    background-color: black;
+    height: 700px;
+}
+.item2 { grid-area: menu; 
+background-color: #2b2828;
+height: 800px;
+
+overflow: hidden;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-areas:
+    "menu main main main main main";
+
+}
+
+.grid-container > div {
+  text-align: center;
+  font-size: 30px;
+}
+
+
+/* navbar */
+@import url(https://fonts.googleapis.com/css?family=Titillium+Web:300);
+.fa-2x {
+font-size: 2em;
+}
+.fa {
+display: inline-block;
+display: table-cell;
+width: 60px;
+height: 36px;
+text-align: center;
+vertical-align: middle;
+font-size:20px;
+}
+
+
+
+
+.main-menu {
+background:#212121;
+width:250px;
+overflow:visible;
+border-right:1px solid #e5e5e5;
+top:0;
+bottom:0;
+height:100%;
+left:0;
+
+overflow:hidden;
+/* -webkit-transition:width .05s linear;
+transition:width .05s linear;
+-webkit-transform:translateZ(0) scale(1,1); */
+
+}
+
+.main-menu>ul {
+margin:7px 0;
+}
+
+.main-menu li {
+
+display:block;
+width:250px;
+}
+
+.main-menu li>a {
+
+display:table;
+border-collapse:collapse;
+border-spacing:0;
+color:#999;
+ font-family: arial;
+font-size: 14px;
+text-decoration:none;
+/* -webkit-transform:translateZ(0) scale(1,1);
+-webkit-transition:all .1s linear;
+transition:all .1s linear; */
+  
+}
+
+.main-menu .nav-icon {
+
+display:table-cell;
+width:60px;
+height:36px;
+text-align:center;
+vertical-align:middle;
+font-size:18px;
+}
+
+.main-menu .nav-text {
+
+display:table-cell;
+vertical-align:middle;
+width:190px;
+  font-family: 'Titillium Web', sans-serif;
+}
+
+.main-menu>ul.logout {
+position:absolute;
+left:0;
+bottom:0;
+}
+/* 
+.no-touch .scrollable.hover {
+overflow-y:hidden;
+}
+
+.no-touch .scrollable.hover:hover {
+overflow-y:auto;
+overflow:visible;
+} */
+
+a:hover,a:focus {
+text-decoration:none;
+}
+/* 
+nav {
+-webkit-user-select:none;
+-moz-user-select:none;
+-ms-user-select:none;
+-o-user-select:none;
+user-select:none;
+} */
+
+nav ul,nav li {
+outline:0;
+margin:0;
+padding:0;
+}
+.main-menu li:hover>a,nav.main-menu li.active>a,.dropdown-menu>li>a:hover,.dropdown-menu>li>a:focus,.dropdown-menu>.active>a,.dropdown-menu>.active>a:hover,.dropdown-menu>.active>a:focus,.no-touch .dashboard-page nav.dashboard-menu ul li:hover a,.dashboard-page nav.dashboard-menu ul li.active a {
+color:#fff;
+background-color:#000000;
+}
+.area {
+float: left;
+background: #e2e2e2;
+width: 100%;
+height: 100%;
+}
+@font-face {
+  font-family: 'Titillium Web';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Titillium WebLight'), local('TitilliumWeb-Light'), url(http://themes.googleusercontent.com/static/fonts/titilliumweb/v2/anMUvcNT0H1YN4FII8wpr24bNCNEoFTpS2BTjF6FB5E.woff) format('woff');
+}
+
+
+
+
+/* 
+
+
+
+
+
+
+
+
+
+
+
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Exo:wght@700&display=swap');
+
+
+
+body {
+    background-color: #27262C;
+  }
+
+
+
+
+
+/*  Edit button */
+/*
+.edit-button {
+  appearance: none;
+  background-color: #8500B4;
+  border: 0px solid #1A1A1A;
+  border-radius: 10px;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-block;
+  font-family: 'Exo', sans-serif;
+  font-size: 16px;
+  width: 70px;
+height: 40px;
+  outline: none;
+  text-align: center;
+  text-decoration: none;
+  transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  will-change: transform;
+}
+
+.edit-button:disabled {
+  pointer-events: none;
+}
+
+.edit-button:hover {
+  box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+  transform: translateY(-2px);
+}
+
+.edit-button:active {
+  box-shadow: none;
+  transform: translateY(0);
+}
+*/
+/*  log-out button */
+
+/*
+.log_out-button {
+  appearance: none;
+  background-color: #8500B4;
+  border: 0px solid #1A1A1A;
+  border-radius: 10px;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-block;
+  font-family: 'Exo', sans-serif;
+  font-size: 16px;
+  width: 100px;
+height: 55px;
+  outline: none;
+  text-align: center;
+  text-decoration: none;
+  transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  will-change: transform;
+
+  position: absolute;
+  left: 90%;
+  top: 60px; 
+}
+
+.log_out-button:disabled {
+  pointer-events: none;
+}
+
+.log_out-button:hover {
+  box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+  transform: translateY(-2px);
+}
+
+.log_out-button:active {
+  box-shadow: none;
+  transform: translateY(0);
+}
+*/
+/*  ADD button */
+
+/*
+.add-button{
+  appearance: none;
+  background-color: #8500B4;
+  border: 0px solid #1A1A1A;
+  border-radius: 10px;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-block;
+  font-family: 'Exo', sans-serif;
+  font-size: 16px;
+  width: 100px;
+height: 45px;
+  outline: none;
+  text-align: center;
+  text-decoration: none;
+  transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  will-change: transform;
+
+  position: absolute;
+  left: 88.5%;
+  top: 255px; 
+}
+
+.add-button:disabled {
+  pointer-events: none;
+}
+
+.add-button:hover {
+  box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+  transform: translateY(-2px);
+}
+
+.add-button:active {
+  box-shadow: none;
+  transform: translateY(0);
+}
+ */

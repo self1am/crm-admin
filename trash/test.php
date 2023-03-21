@@ -1,7 +1,6 @@
 <?php session_start(); ?>
 <?php require_once('./phpFunc/connection/connect.php'); ?>
 <?php require_once('./phpFunc/functions/functions.php'); ?>
-<?php require_once('./initialize.php'); ?>
 
 <?php
 #login check
@@ -28,11 +27,9 @@ $result_user = mysqli_query($connection,$sql1);
 $row_user=mysqli_fetch_assoc($result_user);
 
 #get users data
-
-
-$sql = "SELECT * FROM crm_users ORDER BY id ASC";
+$sql = "SELECT * FROM crm_users WHERE roles != 'admin' ORDER BY id ";
 mysqli_query($connection, $sql);
-$result = mysqli_query($connection,$sql);
+$result_salesman = mysqli_query($connection,$sql);
 
 ?>
 
@@ -44,8 +41,8 @@ $result = mysqli_query($connection,$sql);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
    
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link href="./styles/businessUser/main.css" rel="stylesheet">
-        <link href="./styles/businessUser/add.css" rel="stylesheet">
+        <link href="./assets/css/admin.css" rel="stylesheet">
+        
         <title>Admin View</title>
     
 </head>
@@ -59,7 +56,7 @@ $result = mysqli_query($connection,$sql);
 
 <!-- sub header -->
 
-<span class="sub-head">User Details</span> <div class="sub-line"></div>
+<span class="sub-head">Salesman Details</span> <div class="sub-line"></div>
 
 <span><a href="./phpFunc/functions/businessUser/logout.php"><button class="log_out-button">Logout</button> </a></span>
 
@@ -95,29 +92,19 @@ $result = mysqli_query($connection,$sql);
    Role :  <?php echo" ". $row_user['roles'] . " ";?> </p>
 </div>
 
-<!-- staff view button start  -->
-<!-- <a href="./admin.php"><button class="sales-but">
-<button  class="cus-but">
-
-      <img class="cus-logo" src="./assets/img/pro_avatar.png">
-      <span class="cus-text">staff</span> 
-
-</button>
-</a> -->
-<!-- staff view button over -->
 
 <!--customer butt-->
-<a href="<?php echo base_url ?>acv"><button class="sales-but">
+
 <button  class="cus-but">
 
       <img class="cus-logo" src="./assets/img/cus_det.png">
-      <span class="cus-text">Customers</span> 
+      <span class="cus-text">Customer</span> 
 
 </button>
-</a>
+
 <!-- sales but-->
 
-<a href="<?php echo base_url ?>auv"><button class="sales-but">
+<a href="#abc"><button class="sales-but">
 
       <img class="sales-logo" src="./assets/img/sales.png">
       <span class="sales-text">Sales </span> 
@@ -133,7 +120,7 @@ $result = mysqli_query($connection,$sql);
       <img class="add-logo" src="./assets/img/add_cus.png">
       <span class="add-text">Add</span> 
 
-</button>  
+</button>
 
 
 </div> <!-- menu div -->
@@ -147,10 +134,11 @@ $result = mysqli_query($connection,$sql);
 
 <tr bgcolor="#404040"> 
 
-<th>User ID</th>
+<th>&nbsp;&nbsp;User ID&nbsp;&nbsp;</th>
 <th>Name</th>
-<th>Email</th>
-<th>Role</th>
+<th>Password</th>
+<th>E-mail</th>
+<th>Roles</th>
 <th>Last Login</th>
 <th>Deleted</th>
 <th>Update</th>
@@ -159,17 +147,18 @@ $result = mysqli_query($connection,$sql);
 
 </tr>
 <?php
-while ($row = mysqli_fetch_assoc($result)) {
+while ($row_salesman = mysqli_fetch_assoc($result_salesman)) {
     echo "
         <tr bgcolor='#373737'>
-            <td>" . $row['id'] . "</td>
-            <td>" . $row['name'] . "</td>
-            <td>" . $row['email'] . "</td>
-            <td>" . $row['roles'] . "</td>
-            <td>" . $row['lastLogin'] . "</td>
-            <td>" . $row['deleted'] . "</td>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;<a href='./phpFunc/functions/admin/update.php?user_id=".$row['id']."'><button class='edit-button' role='button'>Edit</button> </a>&nbsp;&nbsp;&nbsp;&nbsp;</td>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;<a href='./phpFunc/functions/admin/update.php?user_id=".$row['id']."'><button class='edit-button' role='button'>Delete</button> </a>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td>" . $row_salesman['id'] . "</td>
+            <td>" . $row_salesman['name'] . "</td>
+            <td>" . $row_salesman['password'] . "</td>
+            <td>" . $row_salesman['email'] . "</td>
+            <td>" . $row_salesman['roles'] . "</td>
+            <td>" . $row_salesman['lastLogin'] . "</td>
+            <td>" . $row_salesman['deleted'] . "</td>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;<a href='./phpFunc/functions/admin/update.php?id=".$row_salesman['id']."'><button class='edit-button' role='button'>Edit</button> </a>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;<a href='./phpFunc/functions/admin/delete.php?id=".$row_salesman['id']."'><button class='edit-button' role='button'>Delete</button> </a>&nbsp;&nbsp;&nbsp;&nbsp;</td>
         </tr>";
 }
 ?>
@@ -178,54 +167,6 @@ while ($row = mysqli_fetch_assoc($result)) {
 
 <!-- user view table over -->
 
-<div id="addform" class="formbox">
-
-<form class="formbox-content animate" action="./phpFunc/functions/admin/insert.php" method="post">
-
-<span onclick="document.getElementById('addform').style.display='none'" class="close-admin"><img  class="close-image-admin" src="./assets/img/close.png"></span>
-   
-<div style="padding:5px;">
-
-
-<div class="input-pos">
-
-<div class="title">Add a Salesman</div><div class="line-dec"></div><br>
-
-<div class="subtitle"></div> <!-- no subttle added -->
-
-    
-      <div class="input-container ic1">
-        <input id="fname" name="name" class="input" type="text" placeholder=" " required />
-        <div class="cut"></div>
-        <label for="firstname" class="placeholder">Name</label>
-      </div>
-
-      <div class="input-container ic2">
-        <input id="email"  name="email" class="input" type="text" placeholder=" " required/>
-        <div class="cut cut-short"></div>
-        <label for="email" class="placeholder">E-mail</label>
-      </div>
-
-      <div class="input-container ic2">
-        <input id="password"  name="password" class="input" type="password" placeholder=" "required />
-        <div class="cut"></div>
-        <label for="password" class="placeholder">Password</label>
-      </div>
-
-
-      <button class="form-button"  type="submit" name="sal_insert">ADD</button>
-
-</div>
-  
-    <br><br><br><br><br>
-     </div>
-</form>
-
-
-
-</div>
-
-<!-- adding  form over -->
 
 
 
