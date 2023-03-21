@@ -65,7 +65,7 @@ echo"failed";
 
 <span class="sub-head">Customer Details</span> <div class="sub-line"></div>
 
-<span><a href="./phpFunc/functions/businessUser/logout.php"><button class="log_out-button">Logout</button> </a></span>
+<span><a href="../phpFunc/functions/businessUser/logout.php"><button class="log_out-button">Logout</button> </a></span>
 
 
 </div>
@@ -101,7 +101,7 @@ echo"failed";
 
 
 <!--customer butt-->
-<a href="./admin.php"><button class="staff-but">
+<a href="../"><button class="staff-but">
 
 
       <img class="staff-logo" src="../assets/img/staff.png">
@@ -111,7 +111,7 @@ echo"failed";
 </a>
 <!-- sales but-->
 
-<a href="./adminSalesView.php"><button class="sales-but">
+<a href="../asv"><button class="sales-but">
 
       <img class="sales-logo" src="../assets/img/sales.png">
       <span class="sales-text">Sales </span> 
@@ -179,7 +179,7 @@ while ($row = mysqli_fetch_assoc($result)) {
 
 <div id="addform" class="formbox">
 
-<form class="formbox-content animate" action="./phpFunc/functions/admin/insert.php" method="post">
+<form class="formbox-content animate" action="../phpFunc/functions/admin/insert.php" method="post">
 
 <span onclick="document.getElementById('addform').style.display='none'" class="close-admin"><img  class="close-image-admin" src="./assets/img/close.png"></span>
    

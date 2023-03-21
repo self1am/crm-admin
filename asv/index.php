@@ -1,19 +1,19 @@
 <?php session_start(); ?>
-<?php require_once('./phpFunc/connection/connect.php'); ?>
-<?php require_once('./phpFunc/functions/functions.php'); ?>
+<?php require_once('../phpFunc/connection/connect.php'); ?>
+<?php require_once('../phpFunc/functions/functions.php'); ?>
 
 <?php
 #login check
 
 if(!($_SESSION["name"] AND $_SESSION["id"] AND $_SESSION["roles"] )) {
     echo "<script>alert('Please Login First');</script>";
-    echo "<script>window.location='./index.php'</script>";
+    echo "<script>window.location='../index.php'</script>";
   }else{
   
     if($_SESSION["roles"] !== 'admin') { 
     
         echo "<script>alert('Invalid Login Request');</script>";
-        echo "<script>window.location='./index.php'</script>";
+        echo "<script>window.location='../index.php'</script>";
       }
   
   }
@@ -51,8 +51,8 @@ if($result){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
    
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link href="./styles/businessUser/main.css" rel="stylesheet">
-        <link href="./styles/businessUser/add.css" rel="stylesheet">
+        <link href="../styles/businessUser/main.css" rel="stylesheet">
+        <link href="../styles/businessUser/add.css" rel="stylesheet">
         <title>Admin View</title>
     
 </head>
@@ -68,7 +68,7 @@ if($result){
 
 <span class="sub-head">Sales Details</span> <div class="sub-line"></div>
 
-<span><a href="./phpFunc/functions/businessUser/logout.php"><button class="log_out-button">Logout</button> </a></span>
+<span><a href="../phpFunc/functions/businessUser/logout.php"><button class="log_out-button">Logout</button> </a></span>
 
 
 </div>
@@ -79,7 +79,7 @@ if($result){
 
 <div class="menu">
 
-<div class="piza-staff"><img class="piza-logo" src="./assets/img/logo.png">
+<div class="piza-staff"><img class="piza-logo" src="../assets/img/logo.png">
 
 <span class="menu-text" style="color:orange;">PiZzA</span><br><span class="menu-text" style="font-size:25px; color:white; postion:relative; left:90px; bottom:45px;">Admin</span>
 
@@ -91,7 +91,7 @@ if($result){
 <button class="pro-view">
 
 
-      <img class="pro-avatar" src="./assets/img/pro_avatar.png">
+      <img class="pro-avatar" src="../assets/img/pro_avatar.png">
       <span class="pro-text">Profile </span> 
 
 </button>
@@ -105,19 +105,19 @@ if($result){
 <div style="position:relative; top:105px;"> <!-- div for space for staff button-->
 
 <!--customer butt-->
-<a href="./adminCustomerView.php"><button class="sales-but">
+<a href="../acv"><button class="sales-but">
 <button  class="cus-but">
 
-      <img class="cus-logo" src="./assets/img/cus_det.png">
+      <img class="cus-logo" src="../assets/img/cus_det.png">
       <span class="cus-text">Customer</span> 
 
 </button>
 </a>
 <!-- sales but-->
 
-<a href="./adminSalesView.php"><button class="sales-but">
+<a href="../asv"><button class="sales-but">
 
-      <img class="sales-logo" src="./assets/img/sales.png">
+      <img class="sales-logo" src="../assets/img/sales.png">
       <span class="sales-text">Sales </span> 
 
 
@@ -129,7 +129,7 @@ if($result){
 
 <button onclick="document.getElementById('addform').style.display='block'" class="add-but">
 
-      <img class="add-logo" src="./assets/img/add_cus.png">
+      <img class="add-logo" src="../assets/img/add_cus.png">
       <span class="add-text">Add</span> 
 
 </button> 
@@ -138,10 +138,10 @@ if($result){
 
 <!-- staff button-->
 
-<a href="./admin.php"><button class="staff-but">
+<a href="../index.php"><button class="staff-but">
 
 
-      <img class="staff-logo" src="./assets/img/staff.png">
+      <img class="staff-logo" src="../assets/img/staff.png">
       <span class="staff-text"> &nbsp;&nbsp;Staff</span> 
 
 </button>
@@ -191,9 +191,9 @@ while ($row = mysqli_fetch_assoc($result)) {
 
 <div id="addform" class="formbox">
 
-<form class="formbox-content animate" action="./phpFunc/functions/admin/insert.php" method="post">
+<form class="formbox-content animate" action="../phpFunc/functions/admin/insert.php" method="post">
 
-<span onclick="document.getElementById('addform').style.display='none'" class="close-admin"><img  class="close-image-admin" src="./assets/img/close.png"></span>
+<span onclick="document.getElementById('addform').style.display='none'" class="close-admin"><img  class="close-image-admin" src="../assets/img/close.png"></span>
    
 <div style="padding:5px;">
 

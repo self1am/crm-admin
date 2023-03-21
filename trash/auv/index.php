@@ -1,20 +1,19 @@
 <?php session_start(); ?>
-<?php require_once('./phpFunc/connection/connect.php'); ?>
-<?php require_once('./phpFunc/functions/functions.php'); ?>
-<?php require_once('./initialize.php'); ?>
+<?php require_once('..phpFunc/connection/connect.php'); ?>
+<?php require_once('..phpFunc/functions/functions.php'); ?>
 
 <?php
 #login check
 
 if(!($_SESSION["name"] AND $_SESSION["id"] AND $_SESSION["roles"] )) {
     echo "<script>alert('Please Login First');</script>";
-    echo "<script>window.location='./index.php'</script>";
+    echo "<script>window.location='../index.php'</script>";
   }else{
   
     if($_SESSION["roles"] !== 'admin') { 
     
         echo "<script>alert('Invalid Login Request');</script>";
-        echo "<script>window.location='./index.php'</script>";
+        echo "<script>window.location='../index.php'</script>";
       }
   
   }
@@ -30,10 +29,18 @@ $row_user=mysqli_fetch_assoc($result_user);
 #get users data
 
 
-$sql = "SELECT * FROM crm_users ORDER BY id ASC";
-mysqli_query($connection, $sql);
-$result = mysqli_query($connection,$sql);
+$sql2 = "SELECT d.Sales_ID as s_id , d.customer_id as c_id, concat(c.fname ,' ', c.lname ) as cust_name , d.Product_ID as p_id, d.Purchased_date as pd, p.Product_Name as item, p.Price_per_unit as price  
+FROM sales_details as d , crm_product as p ,crm_customer as c
+where d.Product_ID = p.Product_ID and d.customer_id = c.customer_id order by d.Purchased_date";
+mysqli_query($connection, $sql2);
+$result = mysqli_query($connection,$sql2);
 
+if($result){
+  //echo "Sucessfull";
+  }
+  else{
+  echo"failed";	
+  }
 ?>
 
 <!DOCTYPE html>
@@ -44,8 +51,8 @@ $result = mysqli_query($connection,$sql);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
    
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link href="./styles/businessUser/main.css" rel="stylesheet">
-        <link href="./styles/businessUser/add.css" rel="stylesheet">
+        <link href="..styles/businessUser/main.css" rel="stylesheet">
+        <link href="..styles/businessUser/add.css" rel="stylesheet">
         <title>Admin View</title>
     
 </head>
@@ -59,9 +66,9 @@ $result = mysqli_query($connection,$sql);
 
 <!-- sub header -->
 
-<span class="sub-head">User Details</span> <div class="sub-line"></div>
+<span class="sub-head">Sales Details</span> <div class="sub-line"></div>
 
-<span><a href="./phpFunc/functions/businessUser/logout.php"><button class="log_out-button">Logout</button> </a></span>
+<span><a href=".phpFunc/functions/businessUser/logout.php"><button class="log_out-button">Logout</button> </a></span>
 
 
 </div>
@@ -72,7 +79,7 @@ $result = mysqli_query($connection,$sql);
 
 <div class="menu">
 
-<div class="piza-staff"><img class="piza-logo" src="./assets/img/logo.png">
+<div class="piza-staff"><img class="piza-logo" src="..assets/img/logo.png">
 
 <span class="menu-text" style="color:orange;">PiZzA</span><br><span class="menu-text" style="font-size:25px; color:white; postion:relative; left:90px; bottom:45px;">Admin</span>
 
@@ -84,7 +91,7 @@ $result = mysqli_query($connection,$sql);
 <button class="pro-view">
 
 
-      <img class="pro-avatar" src="./assets/img/pro_avatar.png">
+      <img class="pro-avatar" src="../assets/img/pro_avatar.png">
       <span class="pro-text">Profile </span> 
 
 </button>
@@ -95,31 +102,22 @@ $result = mysqli_query($connection,$sql);
    Role :  <?php echo" ". $row_user['roles'] . " ";?> </p>
 </div>
 
-<!-- staff view button start  -->
-<!-- <a href="./admin.php"><button class="sales-but">
-<button  class="cus-but">
-
-      <img class="cus-logo" src="./assets/img/pro_avatar.png">
-      <span class="cus-text">staff</span> 
-
-</button>
-</a> -->
-<!-- staff view button over -->
+<div style="position:relative; top:105px;"> <!-- div for space for staff button-->
 
 <!--customer butt-->
-<a href="<?php echo base_url ?>acv"><button class="sales-but">
+<a href=".adminCustomerView.php"><button class="sales-but">
 <button  class="cus-but">
 
-      <img class="cus-logo" src="./assets/img/cus_det.png">
-      <span class="cus-text">Customers</span> 
+      <img class="cus-logo" src="../assets/img/cus_det.png">
+      <span class="cus-text">Customer</span> 
 
 </button>
 </a>
 <!-- sales but-->
 
-<a href="<?php echo base_url ?>asv"><button class="sales-but">
+<a href=".adminSalesView.php"><button class="sales-but">
 
-      <img class="sales-logo" src="./assets/img/sales.png">
+      <img class="sales-logo" src="../assets/img/sales.png">
       <span class="sales-text">Sales </span> 
 
 
@@ -128,12 +126,26 @@ $result = mysqli_query($connection,$sql);
 
 <!--add butt-->
 
+
 <button onclick="document.getElementById('addform').style.display='block'" class="add-but">
 
-      <img class="add-logo" src="./assets/img/add_cus.png">
+      <img class="add-logo" src="../assets/img/add_cus.png">
       <span class="add-text">Add</span> 
 
-</button>  
+</button> 
+
+</div>
+
+<!-- staff button-->
+
+<a href=".admin.php"><button class="staff-but">
+
+
+      <img class="staff-logo" src="../assets/img/staff.png">
+      <span class="staff-text"> &nbsp;&nbsp;Staff</span> 
+
+</button>
+</a>
 
 
 </div> <!-- menu div -->
@@ -143,33 +155,30 @@ $result = mysqli_query($connection,$sql);
 
 <!-- user view table -->
 
-<table border="0" class="table_dec">
+<table border="0" class="table_dec2">
 
 <tr bgcolor="#404040"> 
 
-<th>User ID</th>
-<th>Name</th>
-<th>Email</th>
-<th>Role</th>
-<th>Last Login</th>
-<th>Deleted</th>
-<th>Update</th>
-<th>Delete</th>
-
+<th>Sales ID</th>
+<th>Customer ID</th>
+<th>Customer Name</th>
+<th>Product ID</th>
+<th>Product Name</th>
+<th>Price</th>
+<th>Purchased Date</th>
 
 </tr>
 <?php
 while ($row = mysqli_fetch_assoc($result)) {
-    echo "
+    echo "  
         <tr bgcolor='#373737'>
-            <td>" . $row['id'] . "</td>
-            <td>" . $row['name'] . "</td>
-            <td>" . $row['email'] . "</td>
-            <td>" . $row['roles'] . "</td>
-            <td>" . $row['lastLogin'] . "</td>
-            <td>" . $row['deleted'] . "</td>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;<a href='./phpFunc/functions/admin/update.php?user_id=".$row['id']."'><button class='edit-button' role='button'>Edit</button> </a>&nbsp;&nbsp;&nbsp;&nbsp;</td>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;<a href='./phpFunc/functions/admin/update.php?user_id=".$row['id']."'><button class='edit-button' role='button'>Delete</button> </a>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td style='height:40px;'>" . $row['s_id'] . "</td>
+            <td>" . $row['c_id'] . "</td>
+            <td>" . $row['cust_name'] . "</td>
+            <td>" . $row['p_id'] . "</td>
+            <td>" . $row['item'] . "</td>
+            <td>" . $row['price'] . "</td>
+            <td>" . $row['pd'] . "</td>
         </tr>";
 }
 ?>
@@ -178,11 +187,13 @@ while ($row = mysqli_fetch_assoc($result)) {
 
 <!-- user view table over -->
 
+<!-- add form -->
+
 <div id="addform" class="formbox">
 
-<form class="formbox-content animate" action="./phpFunc/functions/admin/insert.php" method="post">
+<form class="formbox-content animate" action="../phpFunc/functions/admin/insert.php" method="post">
 
-<span onclick="document.getElementById('addform').style.display='none'" class="close-admin"><img  class="close-image-admin" src="./assets/img/close.png"></span>
+<span onclick="document.getElementById('addform').style.display='none'" class="close-admin"><img  class="close-image-admin" src="../assets/img/close.png"></span>
    
 <div style="padding:5px;">
 
